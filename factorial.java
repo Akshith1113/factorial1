@@ -2,26 +2,28 @@ import java.util.Scanner;
 
 public class factorial {
 
-    public static void main(String[] args) {
-        
-        Scanner scanner = new Scanner(System.in);
-
-        
-        System.out.print("Enter a number: ");
-        int number = scanner.nextInt();
-
-        
-        long result = factorial(number);
-        System.out.println("Factorial of " + number + " is " + result);
+    // Method to calculate factorial recursively
+    public static long factorial1(int n) {
+        if (n == 0) {
+            return 1; // Base case: 0! = 1
+        } else {
+            return n * factorial1(n - 1); // Recursive case
+        }
     }
 
-    
-    public static long factorial(int n) {
-        long fact = 1;
-        for (int i = 1; i <= n; i++) {
-            fact *= i;  
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a non-negative integer: ");
+        int number = scanner.nextInt();
+        
+        if (number < 0) {
+            System.out.println("Factorial is not defined for negative numbers.");
+        } else {
+            long result = factorial1(number);
+            System.out.println("Factorial of " + number + " is: " + result);
         }
-        return  fact ;
+        
+        scanner.close();
     }
 }
-
