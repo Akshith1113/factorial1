@@ -1,10 +1,14 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:11-jdk-slim
-# Set the working directory inside the container
-WORKDIR /app
-# Copy the current directory contents into the container at /app
-COPY . .
+# Use the official OpenJDK image as a base
+FROM openjdk:17-jdk-slim
+
+# Set the working directory in the container
+WORKDIR /
+
+# Copy the Java source file into the container
+COPY factorial.java .
+
 # Compile the Java program
 RUN javac factorial.java
-# Command to run the program
+
+# Command to run the Java program
 CMD ["java", "factorial"]
